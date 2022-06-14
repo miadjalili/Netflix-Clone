@@ -9,19 +9,31 @@
 /* Begin PBXBuildFile section */
 		8CB1DA0A2858F462004DFC64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA092858F462004DFC64 /* AppDelegate.swift */; };
 		8CB1DA0C2858F462004DFC64 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA0B2858F462004DFC64 /* SceneDelegate.swift */; };
-		8CB1DA0E2858F462004DFC64 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA0D2858F462004DFC64 /* ViewController.swift */; };
+		8CB1DA0E2858F462004DFC64 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA0D2858F462004DFC64 /* MainTabBarViewController.swift */; };
 		8CB1DA132858F465004DFC64 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CB1DA122858F465004DFC64 /* Assets.xcassets */; };
 		8CB1DA162858F465004DFC64 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CB1DA142858F465004DFC64 /* LaunchScreen.storyboard */; };
+		8CB1DA1F2858FCE1004DFC64 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA1E2858FCE1004DFC64 /* HomeViewController.swift */; };
+		8CB1DA212858FD20004DFC64 /* UpcomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA202858FD20004DFC64 /* UpcomingViewController.swift */; };
+		8CB1DA232858FD48004DFC64 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA222858FD48004DFC64 /* SearchViewController.swift */; };
+		8CB1DA252858FD7D004DFC64 /* DownloadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA242858FD7D004DFC64 /* DownloadsViewController.swift */; };
+		8CB1DA2C28590968004DFC64 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA2B28590968004DFC64 /* CollectionViewTableViewCell.swift */; };
+		8CB1DA2E28591074004DFC64 /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1DA2D28591074004DFC64 /* HeroHeaderUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8CB1DA062858F462004DFC64 /* Netflix Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netflix Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CB1DA092858F462004DFC64 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CB1DA0B2858F462004DFC64 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8CB1DA0D2858F462004DFC64 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8CB1DA0D2858F462004DFC64 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		8CB1DA122858F465004DFC64 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CB1DA152858F465004DFC64 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8CB1DA172858F465004DFC64 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CB1DA1E2858FCE1004DFC64 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		8CB1DA202858FD20004DFC64 /* UpcomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingViewController.swift; sourceTree = "<group>"; };
+		8CB1DA222858FD48004DFC64 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8CB1DA242858FD7D004DFC64 /* DownloadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsViewController.swift; sourceTree = "<group>"; };
+		8CB1DA2B28590968004DFC64 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		8CB1DA2D28591074004DFC64 /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +66,68 @@
 		8CB1DA082858F462004DFC64 /* Netflix Clone */ = {
 			isa = PBXGroup;
 			children = (
+				8CB1DA2A2859088C004DFC64 /* Managers */,
+				8CB1DA292859086A004DFC64 /* Resources */,
+				8CB1DA282859084C004DFC64 /* Models */,
+				8CB1DA26285907CE004DFC64 /* Views */,
+				8CB1DA27285907DC004DFC64 /* ViewModels */,
+				8CB1DA1D2858FC95004DFC64 /* Controllers */,
 				8CB1DA092858F462004DFC64 /* AppDelegate.swift */,
 				8CB1DA0B2858F462004DFC64 /* SceneDelegate.swift */,
-				8CB1DA0D2858F462004DFC64 /* ViewController.swift */,
+				8CB1DA0D2858F462004DFC64 /* MainTabBarViewController.swift */,
 				8CB1DA122858F465004DFC64 /* Assets.xcassets */,
 				8CB1DA142858F465004DFC64 /* LaunchScreen.storyboard */,
 				8CB1DA172858F465004DFC64 /* Info.plist */,
 			);
 			path = "Netflix Clone";
+			sourceTree = "<group>";
+		};
+		8CB1DA1D2858FC95004DFC64 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8CB1DA1E2858FCE1004DFC64 /* HomeViewController.swift */,
+				8CB1DA202858FD20004DFC64 /* UpcomingViewController.swift */,
+				8CB1DA222858FD48004DFC64 /* SearchViewController.swift */,
+				8CB1DA242858FD7D004DFC64 /* DownloadsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8CB1DA26285907CE004DFC64 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8CB1DA2B28590968004DFC64 /* CollectionViewTableViewCell.swift */,
+				8CB1DA2D28591074004DFC64 /* HeroHeaderUIView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8CB1DA27285907DC004DFC64 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8CB1DA282859084C004DFC64 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8CB1DA292859086A004DFC64 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8CB1DA2A2859088C004DFC64 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +200,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CB1DA0E2858F462004DFC64 /* ViewController.swift in Sources */,
+				8CB1DA232858FD48004DFC64 /* SearchViewController.swift in Sources */,
+				8CB1DA0E2858F462004DFC64 /* MainTabBarViewController.swift in Sources */,
+				8CB1DA2C28590968004DFC64 /* CollectionViewTableViewCell.swift in Sources */,
+				8CB1DA2E28591074004DFC64 /* HeroHeaderUIView.swift in Sources */,
+				8CB1DA252858FD7D004DFC64 /* DownloadsViewController.swift in Sources */,
 				8CB1DA0A2858F462004DFC64 /* AppDelegate.swift in Sources */,
 				8CB1DA0C2858F462004DFC64 /* SceneDelegate.swift in Sources */,
+				8CB1DA212858FD20004DFC64 /* UpcomingViewController.swift in Sources */,
+				8CB1DA1F2858FCE1004DFC64 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

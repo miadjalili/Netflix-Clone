@@ -17,7 +17,7 @@ struct Title:Codable{
     
       let id: Int
       let voteAverage: Double
-      let overview: String
+      let overview: String?
       let releaseDate: String?
       let voteCount: Int
       let adult: Bool?
@@ -25,13 +25,14 @@ struct Title:Codable{
       let video: Bool?
       let genreIDS: [Int]
       let title: String?
-      let originalLanguage: String?
       let originalTitle: String?
       let posterPath: String
-      let popularity: Double
+      let popularity: Double?
       let firstAirDate, name, originalName: String?
       let originCountry: [String]?
-
+    
+    
+    
       enum CodingKeys: String, CodingKey {
           case id
           case voteAverage = "vote_average"
@@ -43,7 +44,6 @@ struct Title:Codable{
           case video
           case genreIDS = "genre_ids"
           case title
-          case originalLanguage = "original_language"
           case originalTitle = "original_title"
           case posterPath = "poster_path"
           case popularity

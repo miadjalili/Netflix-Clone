@@ -17,6 +17,14 @@ class SearchViewController: UIViewController {
         return table
     }()
     
+    
+    private let searchController: UISearchController = {
+        let Controller = UISearchController(searchResultsController: SearchResultsViewController())
+        Controller.searchBar.placeholder = "Search for a Movie or a Tv show"
+        Controller.searchBar.searchBarStyle = .minimal
+        return Controller
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -28,7 +36,12 @@ class SearchViewController: UIViewController {
         discoverTable.delegate = self
         discoverTable.dataSource = self
         
+        navigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = .label
+        
         fetchDiscoverMovies()
+        
+        searchController.searchResultsUpdater = self
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,6 +86,41 @@ extension SearchViewController: UITableViewDelegate,UITableViewDataSource {
         return 150
     }
     
+    
+    
+    
+}
+
+
+
+extension SearchViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty ,
+              query.trimmingCharacters(in: .whitespaces).count  >= 3,
+              let resultController  = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+            
+        }
+        
+        
+        APICaller.shared.search(with: query) { result in
+            
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let titles):
+                    resultController.titles = titles
+                    resultController.searchResultsCollectionView.reloadData()
+                case.failure(let error):
+                    print(error.localizedDescription)
+                    
+                }
+                
+            }
+        }
+    }
     
     
     

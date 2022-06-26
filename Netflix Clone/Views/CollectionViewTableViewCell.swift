@@ -7,9 +7,16 @@
 
 import UIKit
 
+
+protocol CollectionViewTableViewCellDelegate : AnyObject {
+    func CollectionViewTableViewCellDidTapCell(_ cell:CollectionViewTableViewCell, viewModel: TitlePreviewViewModel )
+}
+
 class CollectionViewTableViewCell: UITableViewCell {
 
    static let identifier = "CollectionViewTableViewCell"
+    
+    weak var delegate : CollectionViewTableViewCellDelegate?
 
     private var titles: [Title] = [Title]()
     
@@ -54,6 +61,7 @@ class CollectionViewTableViewCell: UITableViewCell {
 extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCollectionViewCell.identifier, for: indexPath) as? TitleCollectionViewCell else {return UICollectionViewCell()}
         cell.configuration(with: titles[indexPath.row].posterPath, vote: Double(titles[indexPath.row].voteAverage))
         return cell
@@ -61,6 +69,26 @@ extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titles.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let title = titles[indexPath.row]
+        guard let titleName = title.originalTitle ?? title.originalName else {
+            return
+        }
+        
+        APICaller.shared.getMovie(with: titleName + " trailer") { [weak self] result in
+            switch result {
+            case .success(let item):
+                guard let titleOverview = title.overview else {return}
+                guard let strongSelf = self else {return}
+                let viewModel = TitlePreviewViewModel(title: titleName , youtubeView: item, titleOverview: titleOverview)
+                self?.delegate?.CollectionViewTableViewCellDidTapCell(strongSelf, viewModel: viewModel)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
 }

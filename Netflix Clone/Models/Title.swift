@@ -21,7 +21,7 @@ struct Title:Codable{
       let releaseDate: String?
       let voteCount: Int
       let adult: Bool?
-      let backdropPath: String
+      let backdropPath: String?
       let video: Bool?
       let genreIDS: [Int]
       let title: String?

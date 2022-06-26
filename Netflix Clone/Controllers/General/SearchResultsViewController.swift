@@ -14,8 +14,8 @@ class SearchResultsViewController: UIViewController {
     
     public let searchResultsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 3 - 10 , height: 200)
-        layout.minimumInteritemSpacing = 0 
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 3) - 25, height: 200)
+        layout.minimumInteritemSpacing = 0
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.register(TitleCollectionViewCell.self, forCellWithReuseIdentifier: TitleCollectionViewCell.identifier)
         return collection
@@ -24,7 +24,6 @@ class SearchResultsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
         searchResultsCollectionView.delegate = self
         searchResultsCollectionView.dataSource = self
         view.addSubview(searchResultsCollectionView)

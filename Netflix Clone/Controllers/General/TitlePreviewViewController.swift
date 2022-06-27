@@ -15,6 +15,7 @@ class TitlePreviewViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 23, weight: .bold)
         label.text = "Harry Potter"
+        label.textColor = .label
         label.numberOfLines = 0
         return label
     }()
@@ -22,6 +23,7 @@ class TitlePreviewViewController: UIViewController {
     private let overViewLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .label
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.text = "Harry Potter  Harry Potter Harry Potter"
         label.numberOfLines = 0
@@ -39,9 +41,11 @@ class TitlePreviewViewController: UIViewController {
         return button
     }()
     
-    private let webView: WKWebView = {
+    private let webView: WKWebView =
+    {
         let webView = WKWebView()
         webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.backgroundColor = .label
         return webView
     }()
 
@@ -98,12 +102,13 @@ class TitlePreviewViewController: UIViewController {
     func configure(with model: TitlePreviewViewModel){
         titleLabel.text = model.title
         overViewLabel.text = model.titleOverview
-        
-        guard let url = URL(string: "https://www.youtube.com/embed/\(model.youtubeView.id)") else
+        print(model.youtubeView.id)
+        guard let url = URL(string: "https://www.youtube.com/embed/\(model.youtubeView.id.videoID)") else
         {
             return
         }
         webView.load(URLRequest(url: url))
+        
     }
 
 }

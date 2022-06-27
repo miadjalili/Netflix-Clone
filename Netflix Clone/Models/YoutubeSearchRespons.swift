@@ -22,12 +22,11 @@ struct Item: Codable {
 // MARK: - ID
 struct ID: Codable {
     let kind: String
-    let videoID, channelID: String?
+    let videoID : String
 
     enum CodingKeys: String, CodingKey {
         case kind
         case videoID = "videoId"
-        case channelID = "channelId"
     }
 }
 

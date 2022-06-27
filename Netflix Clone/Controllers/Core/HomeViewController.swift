@@ -18,6 +18,9 @@ enum sections:Int {
 
 class HomeViewController: UIViewController {
     
+    private var randomTrendingMovie : Title?
+    private var headerView : HeroHeaderUIView?
+    
     let sectionTitles:[String] = ["Trending Movie","Trending Tv","Popular","Upcoming Movies","Top rated"]
     
     private let homeFeedTable : UITableView = {
@@ -36,8 +39,12 @@ class HomeViewController: UIViewController {
         
         configureNavBar()
         
-        let headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
+        headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 450))
         homeFeedTable.tableHeaderView = headerView
+        
+    }
+    
+    private func configureHeaderHeroView(){
         
     }
     
@@ -92,6 +99,8 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource {
                 switch result{
                 case .success(let titles):
                     cell.configure(with: titles)
+                    self.randomTrendingMovie = titles.randomElement()
+                    self.headerView?.configure(with: TitleViewModel(titleName: self.randomTrendingMovie?.originalName ?? self.randomTrendingMovie?.originalTitle ?? "", posterUrl: self.randomTrendingMovie?.posterPath ?? ""))
                 case.failure(let error):
                     print(error.localizedDescription)
                     
@@ -191,13 +200,11 @@ extension HomeViewController : UITableViewDelegate,UITableViewDataSource {
 
 extension HomeViewController: CollectionViewTableViewCellDelegate {
     func CollectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {
-        print("clicked")
-        return
-//        DispatchQueue.main.async { [weak self] in
-//            let vc = TitlePreviewViewController()
-//            vc.configure(with: viewModel)
-//            self?.navigationController?.pushViewController(vc, animated: true)
-//        }
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
        
     }
     
